@@ -1,14 +1,20 @@
 https://velog.io/@alstjdwo1601/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A0%A8-%ED%8C%81
 
+< Char >
+ - char 는 비교가 가능하다.
+   if('a' < 'b') / if ('a'=='a')  => true   String의 경우 .equals() 로 비교를 해야한다.
+ - (char) ('a' + 1) => 'b'  아스키코드 사용 가능
 <String>
  String str = "AaBb";
  String str2 = "1234";
+ - str + str2 => AaBb1234 출력
  - str.length() => 문자열 길이
  - str.toLowerCase() => 소문자
  - str.toUpperCase() => 대문자
  - Integer.parseInt(str2) => 정수형 1234 변환
  - str.charAt(index) => index 번째 String값을 char로 출력
  - String[] arr = str.split(""); => str을 배열로 저장.{"A","a","B","b"}
+ - char[] cArr = str.toCharArray(); => {'A','a', 'B', 'b'}
  - str.substring(idx) => index를 포함한 부분부터 끝까지 추출
    str.substring(idx1,idx2) => idx1 부터 idx2 미만까지 추출
    str2.subString(0,2) + '3.5' + str2.subString(3) => 2번 index 값 변경
@@ -26,8 +32,11 @@ https://velog.io/@alstjdwo1601/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B
 < Array >
 int[] arr = new arr[10];
 int[] tmp = new arr[10];
+ - arr.length => arr의 길이를 출력
  - Arrays.sort(arr) => 배열을 정렬한다.
  - tmp = Arrays.copyOfRange(arr,0,2) => arr 인덱스 0,1의 값을 tmp에 복사한다.
+ - ArrayList<String> AL = new ArrayList<String>(Arrays.asList(arr));  => 배열을 ArrayList 로 변환
+
 < ArrayList >
   arr = {1,2,3,4,5}  / arr2 = {}
  - arr.add(index,item) => 해당 인덱스에 데이터 추가
@@ -38,9 +47,10 @@ int[] tmp = new arr[10];
  - arr.subList(index1,index2) => arr의 index 1 부터 index2 바로 전까지 추출
  - arr.sort(null) => 오름차순으로 정렬한다.
  - arr2.addAll(arr) => arr 깊은 복사
+ - String[] strArr = arr.toArray(new String[arr.size()])
 
  < Collections >
-  - Collections.swap(arr,index1,index2) => 배열의 index1,2 값 변경
+  - Collections.swap(arr,index1,index2) => ArrayList의 index1,2 값 변경
 
 
 < Map >

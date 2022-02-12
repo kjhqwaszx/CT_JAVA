@@ -5,14 +5,10 @@ import java.util.*;
 public class main {
 
     public static void main(String[] args) {
-        Integer[] arr = new Integer[3];
-        ArrayList<Integer> arr2 = new ArrayList<Integer>();
-        String str = "1234";
-
-
-
+        String str = "abcde";
+        String[] str1 = str.split("");
+        ArrayList<String> ss = new ArrayList<String>(Arrays.asList(str1));
+        StringBuffer sb = new StringBuffer();
+        ss.sort(null);
     }
-
 }
-
-
