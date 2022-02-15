@@ -4,6 +4,7 @@ https://velog.io/@alstjdwo1601/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B
  - char 는 비교가 가능하다.
    if('a' < 'b') / if ('a'=='a')  => true   String의 경우 .equals() 로 비교를 해야한다.
  - (char) ('a' + 1) => 'b'  아스키코드 사용 가능
+
 <String>
  String str = "AaBb";
  String str2 = "1234";
@@ -18,24 +19,28 @@ https://velog.io/@alstjdwo1601/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B
  - str.substring(idx) => index를 포함한 부분부터 끝까지 추출
    str.substring(idx1,idx2) => idx1 부터 idx2 미만까지 추출
    str2.subString(0,2) + '3.5' + str2.subString(3) => 2번 index 값 변경
+   
    [StringBuilder] : 문자열을 효과적으로 사용할 수 있도록 도와준다. toString()으로 문자열로 변환해주어야한다. ex) 문자열 붙이기, 역순출력 등등
     - StringBuilder sb = new StringBuilder();
     - sb.append('a'), sb.append('b') => 문자 추가
     - sb.deleteChartAt(1) => 1번 인덱스 삭제
     - sb.setChartAt(0,'A') => 0번 인덱스 값 변경
+    - sb.insert(index, item) => index 위치에 item삽입
     - String sumString = sb.append(str).append(str).toString();
     - String reStr = sb.append(str).reverse().toString(); => str값 역순으로 출력
       = String reStr = new StringBuilder(str).reverse().toString(); => append대신 생성자로 바로 만드는 방법
-
+    
 
 
 < Array >
+String str = "1234";
 int[] arr = new arr[10];
 int[] tmp = new arr[10];
  - arr.length => arr의 길이를 출력
  - Arrays.sort(arr) => 배열을 정렬한다.
  - tmp = Arrays.copyOfRange(arr,0,2) => arr 인덱스 0,1의 값을 tmp에 복사한다.
  - ArrayList<String> AL = new ArrayList<String>(Arrays.asList(arr));  => 배열을 ArrayList 로 변환
+ - ArrayList<String> AL = new ArrayList<String>(Arrays.asList(str.split(""))); => 문자열을 ArrayList 로 변환
 
 < ArrayList >
   arr = {1,2,3,4,5}  / arr2 = {}
