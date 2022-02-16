@@ -12,6 +12,7 @@ https://velog.io/@alstjdwo1601/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B
  - str.length() => 문자열 길이
  - str.toLowerCase() => 소문자
  - str.toUpperCase() => 대문자
+ - str.indexOf("a") => a 의 index 출력
  - Integer.parseInt(str2) => 정수형 1234 변환
  - str.charAt(index) => index 번째 String값을 char로 출력
  - String[] arr = str.split(""); => str을 배열로 저장.{"A","a","B","b"}
@@ -38,6 +39,7 @@ int[] arr = new arr[10];
 int[] tmp = new arr[10];
  - arr.length => arr의 길이를 출력
  - Arrays.sort(arr) => 배열을 정렬한다.
+ - Arrays.sort(arr,Collections.reverseOrder()); => 배열 내림차순 정렬
  - tmp = Arrays.copyOfRange(arr,0,2) => arr 인덱스 0,1의 값을 tmp에 복사한다.
  - ArrayList<String> AL = new ArrayList<String>(Arrays.asList(arr));  => 배열을 ArrayList 로 변환
  - ArrayList<String> AL = new ArrayList<String>(Arrays.asList(str.split(""))); => 문자열을 ArrayList 로 변환
