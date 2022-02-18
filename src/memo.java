@@ -41,6 +41,7 @@ int[] tmp = new arr[10];
  - Arrays.sort(arr) => 배열을 정렬한다.
  - Arrays.sort(arr,Collections.reverseOrder()); => 배열 내림차순 정렬
  - tmp = Arrays.copyOfRange(arr,0,2) => arr 인덱스 0,1의 값을 tmp에 복사한다.
+ - Arrays.binarySearch(arr,3); => 이진탐색을 통해 찾고자하는 값의 인덱스를 리턴한다. 이진탐색이기 때문에 배열은 sort 되어있어야한다.
  - ArrayList<String> AL = new ArrayList<String>(Arrays.asList(arr));  => 배열을 ArrayList 로 변환
  - ArrayList<String> AL = new ArrayList<String>(Arrays.asList(str.split(""))); => 문자열을 ArrayList 로 변환
 
