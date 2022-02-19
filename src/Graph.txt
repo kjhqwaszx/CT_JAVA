@@ -19,8 +19,10 @@
 
   [ DFS ]
    - 주로 재귀함수를 사용해서 탐색을 한다.
+
    // x를 갈 수 있다는 것을 알고 방문한 상태
    static void dfs(int x){
+    sb.append(x).append(' ');
     // x를 방문했다.
     visit[x] = true;
     //x에서 갈 수 있는 곳들을 모두 방문한다.
@@ -48,6 +50,7 @@
 
     while(!que.isEmpty()){ // que가 빌때까지 반복
         int x = que.poll();
+        sb.append(x).append(' ');
         for(int y: x에서 갈 수 있는 점들){
             if(visit[y]) continue; // 이미 방문한 점이면 무시
 

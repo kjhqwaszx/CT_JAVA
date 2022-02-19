@@ -7,10 +7,14 @@ public class main {
 
 
     public static void main(String[] args) {
-        boolean[] a = new boolean[10];
+        Queue<Integer> que = new LinkedList<>();
+        que.add(1);
+        que.add(2);
+        que.add(3);
 
-        for(boolean t : a){
-            System.out.println(t);
-        }
+        System.out.println(que.peek());
+        que.remove();
+        System.out.println(que.peek());
+
     }
 }
