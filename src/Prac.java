@@ -1,50 +1,75 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.sql.Array;
+import java.util.*;
 
 public class Prac {
+    static Scanner sc = new Scanner(System.in);
+    static StringBuilder sb = new StringBuilder();
+    static int N,M,V;
+    static ArrayList<Integer>[] adj;
+    static boolean[] visit;
 
-    public static boolean searchFnc(ArrayList<Integer> dataList, int searchItem) {
-        if (dataList.size() == 1 && searchItem == dataList.get(0)) {
-            return true;
-        }
-        if (dataList.size() == 1 && searchItem != dataList.get(0)) {
-            return false;
-        }
-        if (dataList.size() == 0) {
-            return false;
+    static void input(){
+        N = sc.nextInt();
+        M = sc.nextInt();
+        V = sc.nextInt();
+
+        adj = new ArrayList[N+1];
+
+
+        for (int i = 1; i <= N; i++) {
+            adj[i] = new ArrayList<Integer>();
         }
 
-        int mid = dataList.size() /2 ;
+        for( int i=1; i<= M; i++){
+            int x = sc.nextInt(), y = sc.nextInt();
+            adj[x].add(y);
+            adj[y].add(x);
+        }
 
-        if (dataList.get(mid) == searchItem) {
-            return true;
-        }else{
-            if (dataList.get(mid) > searchItem) {
-                return searchFnc(new ArrayList<Integer>(dataList.subList(0,mid)),searchItem);
-            }else {
-                return searchFnc(new ArrayList<Integer>(dataList.subList(mid+1,dataList.size())),searchItem);
-            }
+        for (int i = 1; i <= N; i++) {
+            Collections.sort(adj[i]);
         }
 
     }
 
+    static void dfs(int x) {
+        sb.append(x).append(' ');
+        visit[x] = true;
+
+        for (int y : adj[x]) {
+            if(visit[y]) continue;
+            visit[y] = true;
+            dfs(y);
+        }
+    }
+
+    static void bfs(int x) {
+        Queue<Integer> que = new LinkedList<Integer>();
+        que.add(x);
+        visit[x] = true;
+
+        while (!que.isEmpty()) {
+             x = que.poll();
+             sb.append(x).append(' ');
+             for(int y : adj[x]){
+                 if(visit[y]) continue;
+                 que.add(y);
+                 visit[y] = true;
+             }
+        }
+
+    }
+
+    static void pro(){
+        visit = new boolean[N+1];
+        dfs(V);
+        for(int i=1; i<=N; i++) visit[i] = false;
+        sb.append('\n');
+        bfs(V);
+        System.out.println(sb);
+    }
     public static void main(String[] args) {
-        ArrayList<Integer> testData = new ArrayList<Integer>();
-
-        for (int i = 0; i < 100; i++) {
-            testData.add((int) (Math.random() * 100) );
-        }
-        Collections.sort(testData);
-        System.out.println(testData);
-        System.out.println(searchFnc(testData,1));
-        System.out.println(searchFnc(testData,2));
-
-        System.out.println(searchFnc(testData,4));
-        System.out.println(searchFnc(testData,5));
-        System.out.println(searchFnc(testData,6));
-        System.out.println(searchFnc(testData,7));
-        System.out.println(searchFnc(testData,8));
-
+        input();
+        pro();
     }
-
 }

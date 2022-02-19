@@ -4,11 +4,13 @@ import java.util.*;
 
 public class main {
 
+
+
     public static void main(String[] args) {
-        String str = "abcde";
-        String[] str1 = str.split("");
-        ArrayList<String> ss = new ArrayList<String>(Arrays.asList(str1));
-        StringBuffer sb = new StringBuffer();
-        ss.sort(null);
+        boolean[] a = new boolean[10];
+
+        for(boolean t : a){
+            System.out.println(t);
+        }
     }
 }
