@@ -71,4 +71,15 @@ int[] tmp = new arr[10];
     int value = map.get(key);
  }
 
+ <Queue>
+  Queue<Integer> que = new LinkedList<>();
+   - que.add(item): que에 값을 추가한다.
+   - que.peek(): 맨 처음 값을 return한다.
+   - que.poll(): 맨 처음 들어간 값을 return 하고 제거한다. //값이 없으면 null을 반환
+   - que.remove(): 맨 처음들어간 값을 제거한다. // 값이 없으면 NoSuchElement 에러 반환
+   - que.clear(): queue를 모두 비운다.
+   - que.size(): queue의 크기를 구한다.
+
+
+
 
