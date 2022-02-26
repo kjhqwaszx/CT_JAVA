@@ -1,84 +1,79 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 public class Prac {
-
     static Scanner sc = new Scanner(System.in);
     static StringBuilder sb = new StringBuilder();
-
-    static int[] Limit;
-    static boolean[] possible;
+    static int a,b,c;
     static boolean[][][] visit;
+    static ArrayList<Integer> ans = new ArrayList<>();
 
-    static class State{
-        int[] bottle = new int[3];
+    public static void main(String[] args) {
+        a = sc.nextInt();
+        b = sc.nextInt();
+        c = sc.nextInt();
+        Queue<int[]> que = new LinkedList<>();
 
-        State(int[] bottle){
-            for (int i = 0; i < 3; i++) this.bottle[i] = bottle[i];
-        }
+        visit = new boolean[a + 1][b + 1][c + 1];
 
-        State move(int from, int to, int[] Limit){
-            int[] tmpBottle = new int[]{this.bottle[0], this.bottle[1], this.bottle[2]};
-
-            if (this.bottle[from] + this.bottle[to] > Limit[to]) {
-                tmpBottle[from] -= Limit[to] - this.bottle[to];
-                tmpBottle[to] = Limit[to];
-            }else{
-                tmpBottle[from] = 0;
-                tmpBottle[to] += this.bottle[from];
-            }
-
-            return new State(tmpBottle);
-        }
-    }
-
-    static void input(){
-        Limit = new int[3];
-
-        for (int i = 0; i < 3; i++) {
-            Limit[i] = sc.nextInt();
-        }
-        possible = new boolean[201];
-        visit = new boolean[201][201][201];
-    }
-
-    static void bfs(int b1, int b2, int b3){
-        Queue<State> que = new LinkedList<>();
-        visit[b1][b2][b3] = true;
-        que.add(new State(new int[] {b1,b2,b3}));
+        que.add(new int[]{0, 0, c});
 
         while (!que.isEmpty()) {
-            State st = que.poll();
+            int[] tmp = que.poll();
 
-            if(st.bottle[0] == 0) possible[st.bottle[2]] = true;
-            for (int from = 0; from < 3; from++) {
-                for (int to = 0; to < 3; to++) {
-                    if(from == to) continue;
-                    State nSt = st.move(from,to,Limit);
-                    if(!visit[nSt.bottle[0]][nSt.bottle[1]][nSt.bottle[2]]){
-                        visit[nSt.bottle[0]][nSt.bottle[1]][nSt.bottle[2]] = true;
-                        que.add(nSt);
-                    }
-                }
+            //이미 확인한 물의 용량
+            if(visit[tmp[0]][tmp[1]][tmp[2]]) continue;
+            visit[tmp[0]][tmp[1]][tmp[2]] = true;
+
+            //A의 물의양이 0 일경우 C의 양 저장
+            if(tmp[0] == 0) ans.add(tmp[2]);
+
+            //A와 B 물통 붓기
+            if(tmp[0] + tmp[1] > b){
+                que.add(new int[]{tmp[0] - (b - tmp[1]), b, tmp[2]});
+            }else{
+                que.add(new int[]{0, tmp[0] + tmp[1], tmp[2]});
+            }
+
+            if (tmp[0] + tmp[1] > a) {
+                que.add(new int[]{a, tmp[1] - (a - tmp[0]), tmp[2]});
+            }else{
+                que.add(new int[]{tmp[0] + tmp[1], 0, tmp[2]});
+            }
+
+            //B와 C 물통 붓기
+            if (tmp[1] + tmp[2] > c) {
+                que.add(new int[]{tmp[0], tmp[1] - (c - tmp[2]), c});
+            }else{
+                que.add(new int[]{tmp[0], 0, tmp[1] + tmp[2]});
+            }
+
+            if (tmp[1] + tmp[2] > b) {
+                que.add(new int[]{tmp[0], b, tmp[2] - (b - tmp[1])});
+            }else{
+                que.add(new int[]{tmp[0], tmp[1] + tmp[2], 0});
+            }
+
+            //A와 C 물통 붓기
+            if (tmp[0] + tmp[2] > c) {
+                que.add(new int[]{tmp[0] - (c - tmp[2]), tmp[1], c});
+            }else{
+                que.add(new int[]{0, tmp[1], tmp[0] + tmp[2]});
+            }
+
+            if (tmp[0] + tmp[2] > a) {
+                que.add(new int[]{a, tmp[1], tmp[2] - (a - tmp[0])});
+            }else{
+                que.add(new int[]{tmp[0] + tmp[2], tmp[1], 0});
             }
         }
-    }
-
-    static void proc() {
-        bfs(0,0,Limit[2]);
-
-        for (int i = 0; i <= Limit[2]; i++) {
-            if(possible[i]) sb.append(i).append(' ');
+        Collections.sort(ans);
+        for (int cnt : ans) {
+            sb.append(cnt).append(' ');
         }
-
         System.out.println(sb);
 
     }
 
-    public static void main(String[] args) {
-        input();
-        proc();
-    }
+
 
 }
