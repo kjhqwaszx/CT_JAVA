@@ -1,9 +1,10 @@
+package GraphSearch;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Prac {
-
+public class waterBottle_2251 {
     static Scanner sc = new Scanner(System.in);
     static StringBuilder sb = new StringBuilder();
 
@@ -11,74 +12,80 @@ public class Prac {
     static boolean[] possible;
     static boolean[][][] visit;
 
+    //물통의 현재 상태와 물을 붓는 행위를 관리하는 구조체
     static class State{
-        int[] bottle = new int[3];
+        int[] bottle;
 
-        State(int[] bottle){
-            for (int i = 0; i < 3; i++) this.bottle[i] = bottle[i];
+        State(int[] _bottle){
+            bottle = new int[3];
+
+            for(int i=0; i<3; i++) bottle[i] = _bottle[i];
         }
 
         State move(int from, int to, int[] Limit){
-            int[] tmpBottle = new int[]{this.bottle[0], this.bottle[1], this.bottle[2]};
+            // from 물통에서 to 물통으로 물을 옮긴다.
+            int[] tmpBottle = new int[]{bottle[0], bottle[1], bottle[2]};
 
-            if (this.bottle[from] + this.bottle[to] > Limit[to]) {
-                tmpBottle[from] -= Limit[to] - this.bottle[to];
+            if(bottle[from] + bottle[to] > Limit[to] ){
+                tmpBottle[from] -= Limit[to] - bottle[to];
                 tmpBottle[to] = Limit[to];
             }else{
                 tmpBottle[from] = 0;
-                tmpBottle[to] += this.bottle[from];
+                tmpBottle[to] += bottle[from];
             }
 
+            // 옮긴 후 물통의 상태 return
             return new State(tmpBottle);
         }
     }
 
     static void input(){
         Limit = new int[3];
-
         for (int i = 0; i < 3; i++) {
             Limit[i] = sc.nextInt();
         }
-        possible = new boolean[201];
-        visit = new boolean[201][201][201];
+
+        visit = new boolean [205][205][205];
+        // C의 물의양 중 가능한 곳, index = 물의 양
+        possible = new boolean[205];
     }
 
-    static void bfs(int b1, int b2, int b3){
+    //물통 탐색 시작
+    static void bfs(int b1, int b2, int b3) {
         Queue<State> que = new LinkedList<>();
         visit[b1][b2][b3] = true;
-        que.add(new State(new int[] {b1,b2,b3}));
+        que.add(new State(new int[]{b1,b2,b3}));
 
         while (!que.isEmpty()) {
             State st = que.poll();
-
             if(st.bottle[0] == 0) possible[st.bottle[2]] = true;
             for (int from = 0; from < 3; from++) {
                 for (int to = 0; to < 3; to++) {
+                    //같은 컵에는 물을 부울 수 없기 떄문에
                     if(from == to) continue;
-                    State nSt = st.move(from,to,Limit);
-                    if(!visit[nSt.bottle[0]][nSt.bottle[1]][nSt.bottle[2]]){
-                        visit[nSt.bottle[0]][nSt.bottle[1]][nSt.bottle[2]] = true;
-                        que.add(nSt);
+                    State nxt = st.move(from,to,Limit);
+                    if(!visit[nxt.bottle[0]][nxt.bottle[1]][nxt.bottle[2]]){
+                        visit[nxt.bottle[0]][nxt.bottle[1]][nxt.bottle[2]] = true;
+                        que.add(nxt);
                     }
                 }
             }
         }
     }
 
-    static void proc() {
-        bfs(0,0,Limit[2]);
+    static void pro() {
+        bfs(0, 0, Limit[2]);
 
         for (int i = 0; i <= Limit[2]; i++) {
             if(possible[i]) sb.append(i).append(' ');
         }
 
         System.out.println(sb);
-
     }
 
     public static void main(String[] args) {
-        input();
-        proc();
-    }
 
+        input();
+        pro();
+    }
 }
