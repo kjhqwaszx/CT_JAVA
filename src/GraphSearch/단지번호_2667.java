@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class danjiNum_2667 {
+public class 단지번호_2667 {
     static Scanner sc = new Scanner(System.in);
     static StringBuilder sb = new StringBuilder();
 

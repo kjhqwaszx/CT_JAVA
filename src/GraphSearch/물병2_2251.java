@@ -2,7 +2,7 @@ package GraphSearch;
 
 import java.util.*;
 
-public class waterBottle2_2251 {
+public class 물병2_2251 {
     static Scanner sc = new Scanner(System.in);
     static StringBuilder sb = new StringBuilder();
     static int a,b,c;

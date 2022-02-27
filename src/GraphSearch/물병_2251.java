@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class waterBottle_2251 {
+public class 물병_2251 {
     static Scanner sc = new Scanner(System.in);
     static StringBuilder sb = new StringBuilder();
 
