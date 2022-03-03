@@ -1,9 +1,8 @@
-import javax.sound.sampled.DataLine;
-import java.awt.image.AreaAveragingScaleFilter;
-import java.lang.reflect.Array;
+package GraphSearch;
+
 import java.util.*;
 
-public class main {
+public class 물병2_2251 {
     static Scanner sc = new Scanner(System.in);
     static StringBuilder sb = new StringBuilder();
     static int a,b,c;
@@ -16,6 +15,7 @@ public class main {
 
         visit = new boolean[a + 1][b + 1][c + 1];
 
+        ArrayList<int[]> list = new ArrayList<>();
         ArrayList<Integer> ans = new ArrayList<>();
         Queue<int[]> que = new LinkedList<>();
         que.add(new int[] {0,0,c});
@@ -72,12 +72,12 @@ public class main {
             } else { // 합이 b보다 작으면, 전부 b로 옮기기
                 que.add(new int[] { tmp[0], tmp[1] + tmp[2], 0 });
             }
+
         }
         Collections.sort(ans);
         for (int i = 0; i < ans.size(); i++) {
             sb.append(ans.get(i)).append(' ');
         }
         System.out.println(sb);
-
     }
 }
