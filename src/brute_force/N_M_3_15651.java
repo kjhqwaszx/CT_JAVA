@@ -1,37 +1,40 @@
-import java.util.*;
+package brute_force;
 
-public class Prac {
-    static Scanner sc = new Scanner(System.in);
+import java.util.Scanner;
+
+public class N_M_3_15651 {
     static StringBuilder sb = new StringBuilder();
-    static int N, M;
+    static Scanner sc = new Scanner(System.in);
+    static int N,M;
     static int[] selected;
+
 
     static void input(){
         N = sc.nextInt();
         M = sc.nextInt();
+        selected = new int[M + 1];
 
-        selected = new int[M];
     }
-
     static void rec(int k){
-        if(k == M){
-            for (int i = 0; i < M; i++) {
+        if(k == M + 1){ // 다 골랐다
+
+            for(int i=1; i<=M; i++){
                 sb.append(selected[i]).append(' ');
             }
             sb.append('\n');
+
         }else{
-            for (int i = 1; i <= N; i++) {
-                selected[k] = i;
-                rec(k+1);
+            for (int n = 1; n <= N; n++) {
+                selected[k] = n;
+                rec(k + 1);
             }
         }
 
     }
-
     public static void main(String[] args) {
         input();
-        rec(0);
+
+        rec(1);
         System.out.println(sb.toString());
     }
-
 }

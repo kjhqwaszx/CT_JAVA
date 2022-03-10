@@ -105,6 +105,7 @@ public class 탈출_3055 {
                 if(visit[nx][ny]) continue; // 이미 방문한 곳인지 확인
                 if(map[nx].charAt(ny) != '.' && map[nx].charAt(ny) != 'D') continue; // 갈 수 있는 칸인지 확인
                 if(dist_water[nx][ny] != -1 && dist_water[nx][ny] <= dist_hedgehog[x][y] + 1) continue; //물에 잠기지 않는 곳인지
+                //** -1을 포함시키지 않는 이유는 두더지 굴 같은 경우는 -1이므로  -1 <=  dist_hedgehog[x][y] + 1 가 항상 성립하기 때문에 모든 테스트 케이스가 KAKTUS 로 출력됨
                 visit[nx][ny] = true;
                 dist_hedgehog[nx][ny] = dist_hedgehog[x][y] + 1;
 
