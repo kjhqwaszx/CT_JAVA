@@ -1,7 +1,11 @@
-import java.lang.reflect.Array;
-import java.util.*;
+package dijkstra;
 
-public class Prac {
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+public class 최소비용구하기_1916 {
     static Scanner sc = new Scanner(System.in);
 
     static class Edge{
