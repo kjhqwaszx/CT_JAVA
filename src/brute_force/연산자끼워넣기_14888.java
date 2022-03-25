@@ -8,13 +8,11 @@ public class 연산자끼워넣기_14888 {
     static int N, min, max;
     static int[] nums;
     static int[] operators; // 연산자의 개수
-    static int[] order; // 연산 순서
 
     static void input() {
         N = sc.nextInt();
         nums = new int[N + 1];
         operators = new int[5];
-        order = new int[N + 1];
         for (int i = 1; i <= N; i++) {
             nums[i] = sc.nextInt();
         }
@@ -48,11 +46,7 @@ public class 연산자끼워넣기_14888 {
             for (int i = 1; i <= 4; i++) {
                 if (operators[i] >= 1) {
                     operators[i] --;
-                    order[k] = i;
                     int new_value = calculator(value, i, nums[k+1]);
-
-
-
                     rec(k+1,new_value);
                     operators[i] ++;
                 }

@@ -28,9 +28,9 @@ public class N_Queen_9663 {
         if( row == N +1){
                 ans ++;
         }else{
-            for (int c = 1; c <= N; c++) {
+            for (int c = 1; c <= N; c++) { // N개의 컬럼중 k번째 컬럼 뽑기
                 boolean possible= true;
-                for (int i = 1; i <= row - 1; i++) {
+                for (int i = 1; i <= row - 1; i++) { // 이전 퀸들의 공격 가능성 판단
                     //(i,col[i])
                     if(attakable(row,c, i, col[i])){
                         possible= false;
