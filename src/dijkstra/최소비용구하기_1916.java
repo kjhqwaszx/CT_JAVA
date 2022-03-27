@@ -83,6 +83,7 @@ public class 최소비용구하기_1916 {
         dijkstra(start);
         System.out.println(dist[end]);
     }
+
     public static void main(String[] args) {
         input();
         proc();
