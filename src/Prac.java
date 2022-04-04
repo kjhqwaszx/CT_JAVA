@@ -2,54 +2,55 @@ import java.util.*;
 
 public class Prac {
     static Scanner sc = new Scanner(System.in);
-    static int T, N, M, l, r, mid ;
-    static int[] A, B, ans;
+    static int n, m;
+    static int[] A, B;
 
     static void input(){
-        T = sc.nextInt();
-        ans = new int[T + 1];
-        for(int i =1; i<=T ; i++){
-            N = sc.nextInt();
-            M = sc.nextInt();
-            A = new int[N + 1];
-            B = new int[M + 1];
-            for(int j = 1; j<=N; j++) A[j] = sc.nextInt();
-            for(int k = 1; k<=M; k++) B[k] = sc.nextInt();
+        n = sc.nextInt();
+        m = sc.nextInt();
 
-            Arrays.sort(B, 1, M+1);
+        A = new int[n];
+        B = new int[m];
 
-            proc(i);
+        for(int i=0; i<n; i++){
+            A[i] = sc.nextInt();
+        }
+        for (int i = 0; i < m; i++) {
+            B[i] = sc.nextInt();
         }
 
-        for (int i = 1; i <= T; i++) {
-            System.out.println(ans[i]);
-        }
     }
-    static void proc(int t) {
-        int ans = 0;
-        for (int s : A) {
-            l = 1;
-            r = B.length - 1;
-            mid = (l + r) / 2;
-            int idx = 0; // 찾으려는 값 바로 직전의 idx ( 작은 수의 개수 )
+    static int binarySearch(int l, int r, int num){
+        int result = 0; // num보다 작으면서 가장 큰 수의 갯수
 
-            while (r >= l) {
-                if (B[mid] < s) {
-                    l = mid + 1;
-                    idx = mid;
-                } else if (B[mid] >= s) {
-                    r = mid - 1;
-                }
-                mid = (l + r) / 2;
-
+        while(l <= r){
+            int m = (l+r) / 2;
+            if(B[m] >= num){
+                r = m-1;
+            }else{
+                l = m+1;
+                result = m+1;
             }
+        }
+        return result;
+    }
+    static void proc() {
+        int ans = 0;
 
-            ans+= idx;
+        Arrays.sort(B);
+        int l = 0, r= B.length -1;
+        for (int i = 0; i < n; i++) {
+            ans += binarySearch(l,r,A[i]);
         }
         System.out.println(ans);
     }
     public static void main(String[] args) {
-        input();
+        int T;
+        T = sc.nextInt();
+        for(int i=0; i<T; i++) {
+            input();
+            proc();
+        }
 
     }
 
