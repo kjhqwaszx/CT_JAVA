@@ -1,57 +1,40 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Prac {
-    static Scanner sc = new Scanner(System.in);
-    static int n, m;
-    static int[] A, B;
+    static int T, N, sx,sy,ex, ey;
+    static int[] arr;
+    static StringBuilder sb = new StringBuilder();
 
-    static void input(){
-        n = sc.nextInt();
-        m = sc.nextInt();
+    static void input() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        T = Integer.parseInt(br.readLine());
 
-        A = new int[n];
-        B = new int[m];
+        for(int i=0; i<T; i++){
+            N = Integer.parseInt(br.readLine());
+            st = new StringTokenizer(br.readLine());
 
-        for(int i=0; i<n; i++){
-            A[i] = sc.nextInt();
+            sx = Integer.parseInt(st.nextToken());
+            sy = Integer.parseInt(st.nextToken());
+
+            st = new StringTokenizer(br.readLine());
+
+            ex = Integer.parseInt(st.nextToken());
+            ey = Integer.parseInt(st.nextToken());
+            sb.append(N).append('\n').append(sx).append(' ').append(sy).append('\n').append(ex).append(' ').append(ey).append('\n');
+
         }
-        for (int i = 0; i < m; i++) {
-            B[i] = sc.nextInt();
-        }
-
+        proc();
     }
-    static int binarySearch(int l, int r, int num){
-        int result = 0; // num보다 작으면서 가장 큰 수의 갯수
 
-        while(l <= r){
-            int m = (l+r) / 2;
-            if(B[m] >= num){
-                r = m-1;
-            }else{
-                l = m+1;
-                result = m+1;
-            }
-        }
-        return result;
-    }
     static void proc() {
-        int ans = 0;
-
-        Arrays.sort(B);
-        int l = 0, r= B.length -1;
-        for (int i = 0; i < n; i++) {
-            ans += binarySearch(l,r,A[i]);
-        }
-        System.out.println(ans);
+        System.out.println(sb.toString());
     }
-    public static void main(String[] args) {
-        int T;
-        T = sc.nextInt();
-        for(int i=0; i<T; i++) {
-            input();
-            proc();
-        }
-
+    public static void main(String[] args) throws IOException {
+        input();
     }
 
 }
