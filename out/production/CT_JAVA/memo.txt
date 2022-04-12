@@ -94,4 +94,37 @@ int[] tmp = new arr[10];
 
 
 
+< BufferReader / StringTokenizer >
+ : BufferReader에 문자열을 넣은 후 StringTokenizer로 하나씩 읽어들인다.
+1. BufferReader로 라인을 읽고 그 라인에서 특정 문자열로 읽어드리려면 StringTokenizer를 사용해야 한다.
+2. new StringTokenizer(br.readLine)을 통해 라인은 읽어들이고 nextToken() 으로 공백 단위로 읽어들인다.
+3. Scanner와 다르게 throws IOException을 함수에 적용해야하고, nextToken()으로 읽을땐 String으로 밖에
+   읽을 수 없어서 Integer.parseInt(st.nextToken());으로 정수형으로 바꾸어야한다.
+4. 다음 라인을 읽고싶을때는 st = new StringTokenizer(br.readLine)을 추가해야한다.
+5. 만약 공백 단위로 한줄을 다 읽고 싶으면 hasMoreTokens()를 사용하면 된다.
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    while(st.hasMoreTokens()){System.out.println(st.nextToken());}
+
+ BufferReader br = new BufferReader(new InputStringReader(System.in));
+ StringTokenizer st = new StringTokenizer(br.readLine); //
+ int N = Integer.parseInt(st.nextToken());
+ int M - Integer.parseInt(st.nextToken());
+ int[] A = new int[N];
+ st = new StringTokenizer(br.readLine());
+ for( int i=0; i<N; i++) A[i] = Integer.parseInt(st.nextToken());
+
+
+
+3
+8
+0 0
+7 0
+100
+0 0
+30 50
+10
+1 1
+1 1
+
+
 
