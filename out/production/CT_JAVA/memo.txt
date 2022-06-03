@@ -14,6 +14,8 @@ https://velog.io/@alstjdwo1601/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B
  - str.toUpperCase() => 대문자
  - str.indexOf("a") => a 의 index 출력
  - str.replace("1","01") => 문자열을 대체하여 출력, 값을 바꾸는건 아니다 **
+ - str.replaceAll("1","01") => 문자열을 모두 대체하여 출력, 값을 바꾸는건 아니다 **
+ - str.contains("#") => 값을 포함하는지 안하는지 true/false;
  - Integer.parseInt(str2) => 정수형 1234 변환
  - str.charAt(index) => index 번째 String값을 char로 출력
  - String[] arr = str.split(""); => str을 배열로 저장.{"A","a","B","b"}
@@ -37,6 +39,7 @@ https://velog.io/@alstjdwo1601/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B
     - String sumString = sb.append(str).append(str).toString();
  *   - String reStr = sb.append(str).reverse().toString(); => str값 역순으로 출력
       = String reStr = new StringBuilder(str).reverse().toString(); => append대신 생성자로 바로 만드는 방법
+     -sb.append(1).append("3") => 모두 String으로 저장한다.
     
 
 
@@ -46,6 +49,8 @@ int[] arr = new arr[10];
 int[] tmp = new arr[10];
  - arr.length => arr의 길이를 출력
  - Arrays.sort(arr) => 배열을 정렬한다.
+ - String.join("",AL); => ArrayList<String> 을 String으로 변환
+ - String.join("",Arr); => String[]을 String으로 변환
  - Arrays.sort(arr,Collections.reverseOrder()); => 배열 내림차순 정렬
  - Arrays.asList(arr).indexOf(item) => 배열에서 해당 아이템의 idx 를 찾을 수 있다.
  - tmp = Arrays.copyOfRange(arr,0,2) => arr 인덱스 0,1의 값을 tmp에 복사한다.
@@ -74,6 +79,8 @@ int[] tmp = new arr[10];
 
  - map.put("str",1) => key, value를 넣는다.
  - map.get("str") => key값을 추출한다.
+ - ArrayList<String> keys = new ArrayList<String>(map.keySet()); => key들을 리스트로 저장한다.
+ - ArrayList<Integer> values = new ArrayList<String>(map.values()); => key들을 리스트로 저장한다.
  - map.containsKey("str"); => map에 키값 "str"이 존재하는지 true/false
  - map.size()
 
